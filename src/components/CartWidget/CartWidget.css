@@ -1,0 +1,16 @@
+.cartWidget{
+    display: flex;
+}
+
+.cartWidget__count{
+    display: none;
+    color: black;
+    font-size: 1em;
+    background-color: white;
+    border-radius: 200px;
+    position: relative;
+    height: 1.5em;
+    width: 1.5em;
+    right: 10px;
+    bottom: 3px;
+}

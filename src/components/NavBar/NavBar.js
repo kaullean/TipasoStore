@@ -13,7 +13,7 @@ const NavBar = () => {
             </div>   
             <div className="containerBrand">
             
-               <h1>Tipaso-Store</h1>
+               <h1>Tipazo-Store</h1>
 
             </div>   
 

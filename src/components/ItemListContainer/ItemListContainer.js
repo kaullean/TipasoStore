@@ -21,9 +21,7 @@ const ItemListContainer = () => {
         })
     },[])
 
-    useEffect(()=>{
-
-    },[products])
+  
 
     const items =[
 

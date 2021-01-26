@@ -24,6 +24,7 @@ function ItemCount ({stock, initial}) {
 
     return(
         <div>
+            <button className="btn btn-success">Comprar</button>
             <button onClick={onAdd}>+</button>
             <span>{count}</span>
             <button onClick={onSubtract}>-</button>

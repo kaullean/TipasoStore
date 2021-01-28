@@ -3,7 +3,7 @@ import "./ItemCount.css"
 
 function ItemCount ({stock, initial}) {
     const [count, setCount]= useState(initial)
-    console.log(count);
+   
     
     function onAdd(){
         if(count<stock)

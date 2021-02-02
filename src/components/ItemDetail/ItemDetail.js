@@ -19,11 +19,32 @@ const ItemDetail = ({items}) => {
     
         })
         call.then(response => {
-            console.log(response)
             setProduct(response)
         })
     },[])
+    const [count, setCount]= useState(1)
+    const [cantidad, setCantidad]= useState()
+    const [mostrar,setMostrar]=useState(false);
+    function onAdd(){
+        if(count<product.stock)
+        setCount(count+1);
 
+        else
+        console.log("No se puede agregar mas stock");
+    }
+
+    function onSubtract(){       
+
+        if(count>0)
+        setCount(count-1);
+
+        else
+        console.log("No se puede Quitar mas stock");
+    }
+    function  addToCart() {
+        setCantidad(count);
+        setMostrar(true);
+    }
 
     return(    
              
@@ -34,7 +55,7 @@ const ItemDetail = ({items}) => {
                     <div className="col-6 d-flex flex-row flex-wrap align-items-center justify-content-center"> 
                         <p className="mt-5 col-12">{product.description} </p>
                         <h1 className="col-12">Precio: ${product.price}</h1>    
-                        <ItemCount className="col-12" stock={product.stock} initial={1} />
+                        <ItemCount {...{onAdd,onSubtract,addToCart,count,mostrar,setMostrar}} className="col-12" stock={product.stock} />
                     </div> 
                   
                 </div>

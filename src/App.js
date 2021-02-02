@@ -63,6 +63,10 @@ function App() {
             <ItemDetailContainer item={items}/>  
           </Route>
 
+          <Route path='/cart'>          
+               <div>Soy el carrito</div>  
+          </Route>
+
           <Route path='/'>          
             <ItemListContainer item={items}/>  
           </Route>

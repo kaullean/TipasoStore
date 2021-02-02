@@ -3,7 +3,7 @@ import "./ItemList.css"
 import ItemCount from "../ItemCount/ItemCount"
 import {Link} from "react-router-dom"
 const ItemList = ({items}) => {  
-   
+   console.log(items);
     return(
         <div className="itemListContainer col-10 d-flex flex-wrap">
             
@@ -16,7 +16,6 @@ const ItemList = ({items}) => {
                             <h1 >{item.title}</h1>
                             <h1>${item.price}</h1>
                             <img className="col-6 my-3"src={item.pictureUrl} />
-                            <ItemCount stock={item.stock} initial={1} />
                         </div>
                     </Link>
                     )}

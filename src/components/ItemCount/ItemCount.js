@@ -1,34 +1,26 @@
 import React, {useState} from 'react';
 import "./ItemCount.css"
-
-function ItemCount ({stock, initial}) {
-    const [count, setCount]= useState(initial)
-   
+import {Link} from "react-router-dom"
+function ItemCount ({onAdd,onSubtract,addToCart,count,mostrar}) {
     
-    function onAdd(){
-        if(count<stock)
-        setCount(count+1);
-
-        else
-        console.log("No se puede agregar mas stock");
-    }
-
-    function onSubtract(){       
-
-        if(count>0)
-        setCount(count-1);
-
-        else
-        console.log("No se puede Quitar mas stock");
-    }
-
+    
     return(
-        <div>
-            <button className="btn btn-success">Comprar</button>
-            <button onClick={onAdd}>+</button>
-            <span>{count}</span>
-            <button onClick={onSubtract}>-</button>
-        </div>       
+        <div> 
+            { !mostrar ? 
+                <div className="addToCartContainer">
+                    <button onClick={onAdd}>+</button>
+                    <span>{count}</span>
+                    <button onClick={onSubtract}>-</button>
+                    <button onClick={addToCart}>Agregar al carrito</button>
+                </div> :
+             
+                <Link to="/cart"><button className="finalizarCompra">Finalizar compra</button></Link>
+       
+             
+                
+            }       
+            
+            </div>       
     )
 }
 

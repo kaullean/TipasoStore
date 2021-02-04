@@ -3,11 +3,11 @@ import ItemCount from "../ItemCount/ItemCount"
 import "./ItemDetail.css"
 import {useEffect, useState} from "react"
 import {useParams} from "react-router-dom"
-
+import {useCartContext} from "../CartContext/CartContext"
 
 const ItemDetail = ({items}) => {  
     const [product,setProduct]= useState({})
-
+    const {addCarrito, clear, removeCarrito,carrito}=useCartContext();
     const {id}=useParams()
     
 
@@ -15,7 +15,7 @@ const ItemDetail = ({items}) => {
         const call = new Promise((resolve,reject) =>{
             setTimeout(()=>{
                 resolve(items[id])
-            },2000)
+            },20)
     
         })
         call.then(response => {
@@ -42,14 +42,17 @@ const ItemDetail = ({items}) => {
         console.log("No se puede Quitar mas stock");
     }
     function  addToCart() {
-        setCantidad(count);
-        setMostrar(true);
-    }
+    //    setCantidad(count);
+    //  setMostrar(true);      
+        addCarrito(product,count)
+        
+        console.log(carrito);
+        }
 
     return(    
              
              
-               (typeof(product.title)!=="undefined") && <div className="d-flex  flex-row flex-wrap" key={product.id} >
+               (typeof(product.title)!=="undefined") && <div className="sarasa d-flex  flex-row flex-wrap" key={product.id} >
                     <h1 className="col-12 my-5">{product.title}</h1>                                   
                     <img className="col-6" src={product.pictureUrl}/>                    
                     <div className="col-6 d-flex flex-row flex-wrap align-items-center justify-content-center"> 

@@ -5,6 +5,7 @@ import {useEffect, useState} from "react"
 import {useParams} from "react-router-dom"
 import {useCartContext} from "../CartContext/CartContext"
 
+
 const ItemDetail = ({items}) => {  
     const [product,setProduct]= useState({})
     const {addCarrito, clear, removeCarrito,carrito}=useCartContext();

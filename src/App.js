@@ -5,6 +5,7 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import {CartProvider} from "./components/CartContext/CartContext"
 import CartContext from "./components/CartContext/CartContext"
+import Cart from "./components/Cart/Cart"
 const items =[
 
   {id:0,
@@ -65,7 +66,7 @@ function App() {
           </Route>
           
             <Route path='/cart'>          
-                <div>Soy el carrito</div>  
+                <Cart/>  
             </Route>
          
           <Route path='/'>          

@@ -13,7 +13,7 @@ const Cart =()=>{
     return(
 
         <div>
-            <h1>Funciono</h1>
+            
         {
            <div> {carrito.length===0 ? <div><h1>Aun no agregaste productos al carrito</h1> 
                                        <Link to='/'><button className="btn btn-success">Volver al inicio</button></Link></div> :

@@ -4,27 +4,32 @@ import "./ItemDetail.css"
 import {useEffect, useState} from "react"
 import {useParams} from "react-router-dom"
 import {useCartContext} from "../CartContext/CartContext"
-
+import {getFirestore} from "../../firebase/index"
 
 const ItemDetail = ({items}) => {  
     const [product,setProduct]= useState({})
     const {addCarrito, clear, removeCarrito,carrito}=useCartContext();
     const {id}=useParams()
-    
 
     useEffect(()=>{
-        const call = new Promise((resolve,reject) =>{
-            setTimeout(()=>{
-                resolve(items[id])
-            },20)
-    
+        //setLoading(true)
+        let db=getFirestore();
+        const itemsFirebase=db.collection("items");
+        const item=itemsFirebase.doc(id);
+        item.get().then((doc)=>{
+            if(doc.exist){
+                console.log("El producto no existe");
+                return;
+            }
+            console.log("Item encontrado");
+            setProduct({id:doc,...doc.data()});
+
+        }).catch((error)=>{
+            console.log("Error al buscar el item",error);
         })
-        call.then(response => {
-            setProduct(response)
-        })
-    },[])
-    const [count, setCount]= useState(1)
-    const [cantidad, setCantidad]= useState()
+ 
+      },[])
+    const [count, setCount]= useState(1);
     const [mostrar,setMostrar]=useState(false);
     function onAdd(){
         if(count<product.stock)
@@ -46,8 +51,6 @@ const ItemDetail = ({items}) => {
     //    setCantidad(count);
     //  setMostrar(true);      
         addCarrito(product,count)
-        
-        console.log(carrito);
         }
 
     return(    

@@ -3,7 +3,7 @@ import "./ItemList.css"
 import ItemCount from "../ItemCount/ItemCount"
 import {Link} from "react-router-dom"
 const ItemList = ({items}) => {  
-   console.log(items);
+   
     return(
         <div className="itemListContainer col-10 d-flex flex-wrap">
             

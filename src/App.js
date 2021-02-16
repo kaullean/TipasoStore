@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 
 
 
+
 function App() {
   const[items,setItems]=useState([])
   
@@ -33,49 +34,14 @@ function App() {
 
 
   },[])
-  const filtrarRopa=()=>{
-    
-      let db=getFirestore();
+  console.log({setItems});
 
-    let itemsFirebase=db.collection("items");
-    const ropa=itemsFirebase.where('categoryId','==','mz7iTHVBC39H2YTBSUxq')
-    ropa.get().then((querySnapshot)=>{
-      if(querySnapshot.size===0){
-        console.log("Sin resultados");
-      }
-      setItems([]);
-      setItems(querySnapshot.docs.map((doc)=>{
-        return({id:doc.id,...doc.data()
-        })
-      }))
-    });
-    
-  }
-  const filtrarAccesorios=()=>{
-    
-    let db=getFirestore();
-
-  let itemsFirebase=db.collection("items");
-  const ropa=itemsFirebase.where('categoryId','==','kV23y1I1EXbc1pNeuTQM')
-  ropa.get().then((querySnapshot)=>{
-    if(querySnapshot.size===0){
-      console.log("Sin resultados");
-    }
-    setItems([]);
-    setItems(querySnapshot.docs.map((doc)=>{
-      return({id:doc.id,...doc.data()
-      })
-    }))
-  });
-  
-}
   return (
     <CartProvider>
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        <button onClick={filtrarRopa}>FiltrarRopa</button>
-        <button onClick={filtrarAccesorios}>FiltrarAccesorios</button>
+
         <Switch>
           
           <Route path='/item/:id'>          
@@ -86,8 +52,8 @@ function App() {
                 <Cart/>  
             </Route>
          
-          <Route path='/'>          
-            <ItemListContainer item={items}/>  
+          <Route path='/'>     
+             <ItemListContainer className="d-flex flex-12" items={items} setItems={setItems} />  
           </Route>
 
         </Switch>

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: black;
+  min-height: 100vw;
 }
 
 a,a:link,a:hover,a:focus{

@@ -10,7 +10,7 @@ const ItemDetail = ({items}) => {
     const [product,setProduct]= useState({})
     const {addCarrito, clear, removeCarrito,carrito}=useCartContext();
     const {id}=useParams()
-
+    
     useEffect(()=>{
         //setLoading(true)
         let db=getFirestore();
@@ -18,14 +18,14 @@ const ItemDetail = ({items}) => {
         const item=itemsFirebase.doc(id);
         item.get().then((doc)=>{
             if(doc.exist){
-                console.log("El producto no existe");
+              //  console.log("El producto no existe");
                 return;
             }
-            console.log("Item encontrado");
-            setProduct({id:doc,...doc.data()});
+            console.log("Item encontrado"+id);
+            setProduct({id:id,...doc.data()});
 
         }).catch((error)=>{
-            console.log("Error al buscar el item",error);
+           // console.log("Error al buscar el item",error);
         })
  
       },[])
@@ -49,7 +49,8 @@ const ItemDetail = ({items}) => {
     }
     function  addToCart() {
     //    setCantidad(count);
-    //  setMostrar(true);      
+    //  setMostrar(true);  
+    console.log(product);    
         addCarrito(product,count)
         }
 

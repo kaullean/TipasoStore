@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import "./ItemListContainer.css"
-import ItemCount from "../ItemCount/ItemCount"
 import ItemList from "../ItemList/ItemList"
-
-const ItemListContainer = ({item}) => {  
-    return(                 
-        <ItemList items={item} />
+import ItemListPanelBar from "../ItemListPanelBar/ItemListPanelBar"
+const ItemListContainer = ({items,setItems}) => {  
+    
+    return(  
+        <div>  
+            <ItemListPanelBar className="col-3 itemListPanelBar" items={items} setItems={setItems}/>
+           
+            <ItemList items={items} />
+        </div> 
     )
 }
 

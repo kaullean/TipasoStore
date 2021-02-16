@@ -12,7 +12,9 @@ export const CartProvider = ({children}) =>{
     function addCarrito(item,quantity) {
         let cantidad=cantidadDeProductos;
         let carritoAux=carrito;
-        if(!isInCart(item.id)){       
+       
+        if(!isInCart(item.id)){  
+            console.log(item.id);     
             let itemAux={item,quantity};
             carritoAux.push(itemAux);
             setCarrito(carritoAux); 
@@ -61,13 +63,12 @@ export const CartProvider = ({children}) =>{
             
             if(carrito[i].item.id===id)
             {       
-                console.log("asd");
                 return true;
             }
         }
         return false;
     }
-    
+
     return(
         <CartContext.Provider value={{addCarrito, clear, removeCarrito,carrito,cantidadDeProductos}} >{children} </CartContext.Provider>
     )

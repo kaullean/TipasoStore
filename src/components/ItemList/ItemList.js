@@ -1,14 +1,14 @@
 import React from "react";
 import "./ItemList.css"
-import ItemCount from "../ItemCount/ItemCount"
 import {Link} from "react-router-dom"
-const ItemList = ({items}) => {  
-   
+
+const ItemList = ({items,setItems}) => {  
+    
     return(
-        <div className="itemListContainer col-10 d-flex flex-wrap">
+        <div className="itemListContainer col-9 d-flex flex-wrap">
             
              
-                
+                  <div className="col-9 d-flex flex-wrap">
                     {items && items.map(item => 
                      
                      <Link className="col-3 m-3 p-3 itemCard d-flex" to={`item/${item.id}`} key={item.id} >
@@ -18,7 +18,7 @@ const ItemList = ({items}) => {
                             <img className="col-6 my-3"src={item.pictureUrl} />
                         </div>
                     </Link>
-                    )}
+                    )}</div>
                 
              
              

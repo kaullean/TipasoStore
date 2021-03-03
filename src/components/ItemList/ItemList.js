@@ -15,7 +15,7 @@ const ItemList = ({items,setItems}) => {
                         <div className="d-flex row justify-content-center" >                        
                             <h1 >{item.title}</h1>
                             <h1>${item.price}</h1>
-                            <img className="col-6 my-3"src={item.pictureUrl} />
+                            <img className="my-3" src={item.pictureUrl} />
                         </div>
                     </Link>
                     )}</div>

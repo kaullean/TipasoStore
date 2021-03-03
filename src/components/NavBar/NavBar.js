@@ -5,10 +5,9 @@ import {Link} from "react-router-dom"
 const NavBar = () => {
 
     return(
-        <div className="containerNavBar pt-3">
-            <div className="containerMenu">
+        <div className="containerNavBar ">
+            <div className="containerMenu pt-3 pb-3">
                 <a className="containerMenu__link animated-button victoria-two px-3 " href="#">Home</a>
-                <a className="containerMenu__link animated-button victoria-two px-3" href="#">Catalogo</a>
                 <a className="containerMenu__link animated-button victoria-two px-3" href="#">Contacto</a>
                 <CartWidget/>
             </div>  

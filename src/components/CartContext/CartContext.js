@@ -8,13 +8,13 @@ export const CartProvider = ({children}) =>{
 
     const [cantidadDeProductos, setCantidadDeProductos]=useState(0)
     const [carrito, setCarrito]=useState([])
-  
+    const [totalCompra,setTotalCompra]=useState(0);
+    const [carritoFirebase,setCarritoFirebase]=useState([])
     function addCarrito(item,quantity) {
         let cantidad=cantidadDeProductos;
         let carritoAux=carrito;
        
-        if(!isInCart(item.id)){  
-            console.log(item.id);     
+        if(!isInCart(item.id)){       
             let itemAux={item,quantity};
             carritoAux.push(itemAux);
             setCarrito(carritoAux); 
@@ -34,13 +34,26 @@ export const CartProvider = ({children}) =>{
             cantidad+=quantity;
             setCantidadDeProductos(cantidad);    
         }
+        actualizarTotalCompra(carritoAux);
     }
-
+    function actualizarTotalCompra(carritoActualizado){
+        let carritoAux=[];
+        let totalAux=0;
+        console.log(carritoActualizado);
+        carritoActualizado.map((item)=>{
+            carritoAux.push({id:item.item.id,
+                             quantity:item.quantity })
+            
+            totalAux=item.item.price*item.quantity+totalAux;
+            console.log("map");
+        })
+        setCarritoFirebase(carritoAux);
+        setTotalCompra(totalAux);
+    }
     function removeCarrito(id){
         let carritoAux=carrito;
         let cantidad=cantidadDeProductos;
         carrito.map((itemSeleccionado,index)=>{
-            console.log(index);
             if(itemSeleccionado.item.id===id)
             {          
                 carritoAux.splice(index, 1);
@@ -50,11 +63,14 @@ export const CartProvider = ({children}) =>{
             }          
 
         })
-       
+       actualizarTotalCompra(carritoAux);
     }
 
     function clear(){
+        setCantidadDeProductos(0);
         setCarrito([]);
+        setTotalCompra(0);
+        
     }
 
     function isInCart(id){        
@@ -70,6 +86,6 @@ export const CartProvider = ({children}) =>{
     }
 
     return(
-        <CartContext.Provider value={{addCarrito, clear, removeCarrito,carrito,cantidadDeProductos}} >{children} </CartContext.Provider>
+        <CartContext.Provider value={{addCarrito, clear, removeCarrito,carrito,cantidadDeProductos,totalCompra,carritoFirebase}} >{children} </CartContext.Provider>
     )
 }

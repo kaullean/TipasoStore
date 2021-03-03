@@ -18,7 +18,7 @@ function App() {
   useEffect(()=>{
     //setLoading(true)
     let db=getFirestore();
-    const itemsFirebase=db.collection("items").limit(6);
+    const itemsFirebase=db.collection("items");
     itemsFirebase.get()
       .then((querySnapshot)=>{
         querySnapshot.size === 0 && console.log("No hay items");
@@ -29,12 +29,12 @@ function App() {
           })
         }))
         
-        
+       
       })
 
 
   },[])
-  console.log({setItems});
+  
 
   return (
     <CartProvider>
@@ -43,7 +43,7 @@ function App() {
         <NavBar />
 
         <Switch>
-          
+
           <Route path='/item/:id'>          
             <ItemDetailContainer item={items}/>  
           </Route>

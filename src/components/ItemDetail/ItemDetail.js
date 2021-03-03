@@ -8,7 +8,7 @@ import {getFirestore} from "../../firebase/index"
 
 const ItemDetail = ({items}) => {  
     const [product,setProduct]= useState({})
-    const {addCarrito, clear, removeCarrito,carrito}=useCartContext();
+    const {addCarrito}=useCartContext();
     const {id}=useParams()
     
     useEffect(()=>{
@@ -41,7 +41,7 @@ const ItemDetail = ({items}) => {
 
     function onSubtract(){       
 
-        if(count>0)
+        if(count>1)
         setCount(count-1);
 
         else
@@ -50,7 +50,7 @@ const ItemDetail = ({items}) => {
     function  addToCart() {
     //    setCantidad(count);
     //  setMostrar(true);  
-    console.log(product);    
+        
         addCarrito(product,count)
         }
 

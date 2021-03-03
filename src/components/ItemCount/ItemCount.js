@@ -8,9 +8,9 @@ function ItemCount ({onAdd,onSubtract,addToCart,count,mostrar}) {
         <div> 
             { !mostrar ? 
                 <div className="addToCartContainer">
-                    <button onClick={onAdd}>+</button>
-                    <span>{count}</span>
                     <button onClick={onSubtract}>-</button>
+                    <span>{count}</span>        
+                    <button onClick={onAdd}>+</button>
                     <button onClick={addToCart}>Agregar al carrito</button>
                 </div> :
              

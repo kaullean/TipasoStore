@@ -48,12 +48,12 @@ function App() {
             <ItemDetailContainer item={items}/>  
           </Route>
           
-            <Route path='/cart'>          
-                <Cart/>  
-            </Route>
+          <Route path='/cart'>          
+            <Cart/>  
+          </Route>
          
           <Route path='/'>     
-             <ItemListContainer className="d-flex flex-12" items={items} setItems={setItems} />  
+            <ItemListContainer className="d-flex flex-12" items={items} setItems={setItems} />  
           </Route>
 
         </Switch>

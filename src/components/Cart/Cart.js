@@ -123,7 +123,7 @@ const Cart =()=>{
             
                 {totalCompra>0 &&  
                     <div className="col-6">
-                        <h1>TOTAL:{totalCompra} </h1>
+                        <h1>TOTAL: ${totalCompra} </h1>
                         <div>                        
                             <form onSubmit={handleCompra}>
                                 <input onChange={(e)=>buyerOnChange(e,"nombre")} type="text" className="form-control" placeholder="First name" aria-label="First name" />                            

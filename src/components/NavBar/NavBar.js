@@ -7,8 +7,7 @@ const NavBar = () => {
     return(
         <div className="containerNavBar ">
             <div className="containerMenu pt-3 pb-3">
-                <a className="containerMenu__link animated-button victoria-two px-3 " href="#">Home</a>
-                <a className="containerMenu__link animated-button victoria-two px-3" href="#">Contacto</a>
+                <Link to='/' className="containerMenu__link animated-button victoria-two px-3">Home</Link>
                 <CartWidget/>
             </div>  
             <Link to='/'>
